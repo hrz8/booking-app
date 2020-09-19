@@ -36,7 +36,9 @@ Start Debug on VSCode (required Xdebug)
 
 #### Available Endpoints
 
-`POST /login`
+Default dev url and port `127.0.0.1:8000`
+
+`POST /api/login`
 > all generated users has `12345678` as password default and can only access `/login` endpoint. While `adminroot` user has permissions to access all endpoints.
 ``` bash
 {
@@ -45,7 +47,7 @@ Start Debug on VSCode (required Xdebug)
 }
 ```
 
-`GET /bookings`
+`GET api//bookings`
 ``` bash
 # Header
 {
@@ -53,7 +55,7 @@ Start Debug on VSCode (required Xdebug)
 }
 ```
 
-`GET /users/bookings`
+`GET api//users/bookings`
 ``` bash
 # Header
 {
