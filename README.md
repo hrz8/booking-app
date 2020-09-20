@@ -34,29 +34,48 @@ $ php artisan serve
 Start Debug on VSCode (required Xdebug)
 ```
 
+### Database
+
+![erd screenshot](https://github.com/[username]/[reponame]/blob/[branch]/db.jpg?raw=true)
+
 #### Available Endpoints
 
-Default dev url and port `127.0.0.1:8000`
+Default dev url and port is: `127.0.0.1:8000`
+
+*Notes:
+- All generated users has `12345678` as default password from `db:seed`.
+- All endpoints need jwt auth except `/api/login`.
+- All endpoints need permission for user authorization except `/api/login`.
+- `adminroot` user has permissions to access all endpoints.
+- Permission to each endpoint configured like this:
+
+    ``` php
+    Route::get('/api/end-point', [Controller::class, 'action'])
+        ->middleware('common:canView,canViewDetail');
+    ```
+
+- Where `common` is middleware for handling permission to each endpoint. While `canView` and `canViewDetail` is permission that user needed to access the endpoint which is defined on `permissions` table on database.
+- User's permission mapped thru `users_permissions` table.
 
 `POST /api/login`
-> all generated users has `12345678` as password default and can only access `/login` endpoint. While `adminroot` user has permissions to access all endpoints.
-``` bash
+
+``` json
 {
     "username": "adminroot",
     "password": "12345678"
 }
 ```
 
-`GET api//bookings`
-``` bash
+`GET /api/bookings`
+``` json
 # Header
 {
     "Authorization": "Bearer jwttokenwhichgeneratedwhenlogin",
 }
 ```
 
-`GET api//users/bookings`
-``` bash
+`GET /api/users/bookings`
+``` json
 # Header
 {
     "Authorization": "Bearer jwttokenwhichgeneratedwhenlogin",
