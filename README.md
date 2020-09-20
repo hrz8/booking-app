@@ -2,7 +2,7 @@
 
 ## Quick Start
 
-### Reuirements
+### Requirements
 
 ```bash
 PHP >= 7.3
