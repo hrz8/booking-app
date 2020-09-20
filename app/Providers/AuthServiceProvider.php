@@ -5,6 +5,8 @@ namespace App\Providers;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
+use App\Models\Permission;
+
 class AuthServiceProvider extends ServiceProvider
 {
     /**
@@ -25,10 +27,8 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        foreach ([
-            'viewBooking',
-            'viewUserBooking'
-        ] as $p) {
+        $permissions = Permission::all()->pluck('code')->toArray();
+        foreach ($permissions as $p) {
             Gate::define($p, function($user) use ($p) {
                 return in_array(
                     $p,
