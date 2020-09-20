@@ -36,7 +36,7 @@ Start Debug on VSCode (required Xdebug)
 
 ### Database
 
-![erd screenshot](https://github.com/[username]/[reponame]/blob/[branch]/db.jpg?raw=true)
+![erd screenshot](https://github.com/hrz8/booking-app/blob/master/db.png?raw=true)
 
 #### Available Endpoints
 
